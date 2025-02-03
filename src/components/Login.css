@@ -1,0 +1,67 @@
+/* Fondo oscuro con centrado */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333;
+  }
+  
+  /* Caja de login */
+  .login-box {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Título */
+  .login-box h2 {
+    color: white;
+    font-family: "Serif", cursive;
+    margin-bottom: 20px;
+  }
+  
+  /* Campos de entrada */
+  .login-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: #444;
+    color: white;
+  }
+  
+  /* Botón */
+  .login-box button {
+    width: 100%;
+    padding: 10px;
+    background: #666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-box button:hover {
+    background: #888;
+  }
+  
+  /* Enlace de registro */
+  .login-box p {
+    color: white;
+    font-size: 14px;
+  }
+  
+  .login-box a {
+    color: #4fa3ff;
+    text-decoration: none;
+  }
+  
+  .login-box a:hover {
+    text-decoration: underline;
+  }
+  
