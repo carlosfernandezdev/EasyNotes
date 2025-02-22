@@ -1,0 +1,71 @@
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .note-card {
+    background: #ffffff;
+    color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%; 
+    height: 50vh;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .note-card h3 {
+    font-size: 20px;
+    color: #151719;
+  }
+  
+  .note-card p {
+    font-size: 16px;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .carousel-btn {
+    background: #93a3b5;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  
+  .carousel-btn:hover {
+    background: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    .note-card {
+      width: 90%;
+      height: auto;
+    }
+  }
+  .delete-btn {
+    padding: 10px 20px;
+  border-radius: 10px;
+  border: 0;
+  background-color: rgb(255, 56, 86);
+  letter-spacing: 1.5px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background: #c82333;
+  }
+  

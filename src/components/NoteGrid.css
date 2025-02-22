@@ -1,0 +1,154 @@
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  gap: 20px;
+  padding: 20px;
+  width: calc(100% - 250px); 
+  max-width: 100%;
+  overflow-y: auto;
+  justify-content: flex-start; 
+  margin-left: 250px; 
+  height: 100vh; 
+  }
+  
+  
+  @media (min-width: 1024px) {
+    .note-grid {
+      grid-template-columns: repeat(4, 1fr); 
+    }
+  }
+  
+  .note-card {
+    background: #f8f9fa;
+    color: #333;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    width: 100px !important; 
+    height: 100px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 8px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+ 
+  .note-card h3 {
+    font-size: 8px;
+    margin: 0;
+  }
+
+  .note-card p {
+    font-size: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .note-card:hover {
+    transform: scale(1.1);
+    background: #e9ecef;
+  }
+  
+  
+  .note-card h3 {
+    font-size: 10px; 
+    margin: 0;
+  }
+  
+  .note-card p {
+    font-size: 8px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .note-card:hover {
+    transform: scale(1.1);
+    background: #e9ecef;
+  }
+  
+  
+  .note-card h3 {
+    color: #007bff;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .note-card p {
+    font-size: 14px;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .note-card:hover {
+    transform: scale(1.05);
+    background: #e9ecef;
+  }
+  
+  @media (max-width: 768px) {
+    .note-grid {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+  
+    .note-card {
+      width: 180px;
+      height: 180px;
+    }
+  }
+  .delete-btn-grid {
+    padding: 5px 5px;
+  border-radius: 10px;
+  border: 0;
+  background-color: rgb(255, 56, 86);
+  letter-spacing: 1.5px;
+  font-size: 10px;
+  transition: all 0.3s ease;
+  box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  }
+
+  .delete-btn-grid:hover {
+    box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+  }
+
+  .delete-btn-grid:active {
+    background-color: rgb(255, 56, 86);
+  /*50, 168, 80*/
+  box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+  transform: translateY(5px);
+  transition: 200ms;
+  }
+
+  .view-btn-grid {
+    padding: 5px 5px;
+  border-radius: 10px;
+  border: 0;
+  background-color: rgb(37, 162, 66);
+  letter-spacing: 1.5px;
+  font-size: 10px;
+  transition: all 0.3s ease;
+  box-shadow: rgb(17, 80, 36) 0px 10px 0px 0px;
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  }
+
+  .view-btn-grid:hover {
+    box-shadow: rgb(113, 201, 46) 0px 7px 0px 0px;
+  }
+
+  .view-btn-grid:active {
+    background-color: rgb(83, 255, 56);
+  /*50, 168, 80*/
+  box-shadow: rgb(51, 201, 46) 0px 0px 0px 0px;
+  transform: translateY(5px);
+  transition: 200ms;
+  }
