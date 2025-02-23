@@ -33,7 +33,7 @@ const NoteCarousel = ({ notes, setNotes }) => {
     <div className="carousel-container">
       <button className="carousel-btn prev" onClick={prevNote}>⬅</button>
 
-      <div className="note-card">
+      <div className="note-card-carousel">
         <h3 onClick={() => setSelectedNote(notes[currentIndex])}>{notes[currentIndex].title}</h3>
         <p onClick={() => setSelectedNote(notes[currentIndex])}>
           {notes[currentIndex].content.length > 50 ? notes[currentIndex].content.substring(0, 50) + "..." : notes[currentIndex].content}

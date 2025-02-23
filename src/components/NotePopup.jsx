@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"; 
 import { useState } from "react";
 import "./NotePopup.css";
 
-const NotePopup = ({ note, onClose, setNotes, isNew }) => {
+const NotePopup = ({ note, onClose, setNotes, isNew, currentUser }) => {
   const [title, setTitle] = useState(note?.title || "");
   const [content, setContent] = useState(note?.content || "");
   const [isLoading, setIsLoading] = useState(false);
@@ -10,6 +10,14 @@ const NotePopup = ({ note, onClose, setNotes, isNew }) => {
   const handleSave = async () => {
     if (!title.trim() || !content.trim()) {
       alert("⚠️ El título y el contenido no pueden estar vacíos.");
+      return;
+    }
+    if (title.length > 20) {
+      alert("⚠️ El título no puede tener más de 20 caracteres.");
+      return;
+    }
+    if (content.length > 100) {
+      alert("⚠️ El contenido no puede tener más de 100 caracteres.");
       return;
     }
 
@@ -20,7 +28,7 @@ const NotePopup = ({ note, onClose, setNotes, isNew }) => {
 
       if (isNew) {
         console.log("📌 Creando nueva nota...");
-        const newNote = { title, content, user_id: 1 };
+        const newNote = { title, content, user_id: currentUser.id };
 
         response = await fetch("http://localhost:5000/api/notes", {  
           method: "POST",
@@ -42,7 +50,7 @@ const NotePopup = ({ note, onClose, setNotes, isNew }) => {
         setNotes((prevNotes) => [...prevNotes, data]);  
       } else {
         console.log("📌 Editando nota existente...");
-        const updatedNote = { title, content, user_id: note.user_id };
+        const updatedNote = { title, content, user_id: currentUser.id };
 
         response = await fetch(`http://localhost:5000/api/notes/${note.id_nota}`, {
           method: "PUT",
@@ -79,21 +87,25 @@ const NotePopup = ({ note, onClose, setNotes, isNew }) => {
     <div className="popup-overlay">
       <div className="popup-content">
         <input
+          className="title-input"
           type="text"
           placeholder="Título"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
+          className="content-textarea"
           placeholder="Escribe tu nota aquí..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
         <div className="popup-buttons">
-          <button onClick={handleSave} className="save-btn" disabled={isLoading}>
+          <button className="save-btn" onClick={handleSave} disabled={isLoading}>
             {isLoading ? "Guardando..." : "Guardar"}
           </button>
-          <button onClick={onClose} className="close-btn">Cerrar</button>
+          <button className="close-btn" onClick={onClose} >
+            Cerrar
+          </button>
         </div>
       </div>
     </div>
@@ -105,6 +117,9 @@ NotePopup.propTypes = {
   onClose: PropTypes.func.isRequired,
   setNotes: PropTypes.func.isRequired,
   isNew: PropTypes.bool,
+  currentUser: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default NotePopup;

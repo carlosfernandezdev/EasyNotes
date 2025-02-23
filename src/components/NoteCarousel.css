@@ -6,12 +6,12 @@
     margin-top: 20px;
   }
   
-  .note-card {
+  .note-card-carousel {
     background: #ffffff;
     color: #222;
     padding: 20px;
     border-radius: 10px;
-    width: 50%; 
+    width: 50vh; 
     height: 50vh;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -53,12 +53,12 @@
     }
   }
   .delete-btn {
-    padding: 10px 20px;
+    padding: 5px 10px;
   border-radius: 10px;
   border: 0;
   background-color: rgb(255, 56, 86);
   letter-spacing: 1.5px;
-  font-size: 15px;
+  font-size: 10px;
   transition: all 0.3s ease;
   box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
   color: hsl(0, 0%, 100%);

@@ -23,8 +23,9 @@
   
   .popup-content input,
   .popup-content textarea {
-    width: 100%;
+    width: 98%;
     margin-bottom: 10px;
+    border-radius: 10px;
     padding: 10px;
     border: 1px solid #ccc;
   }
@@ -58,3 +59,15 @@
     cursor: pointer;
   }
   
+  .content-textarea{
+    height: 100px;
+    width: 100px;
+    resize: none;
+  }
+
+  .title-input{
+    width: 50%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
