@@ -33,11 +33,23 @@ export const createNote = async (req, res) => {
 
 export const updateNote = async (req, res) => {
   const { id_nota } = req.params;
-  const { content, user_id } = req.body;
+  const { title, content, user_id } = req.body;
+
+  if (!user_id) {
+    return res.status(400).json({ error: "Falta el user_id" });
+  }
 
   try {
-    await query("UPDATE notes SET content = $1 WHERE id_nota = $2 AND user_id = $3", [content, id_nota, user_id]);
-    res.json({ message: "Nota actualizada" });
+    const result = await query(
+      "UPDATE notes SET title = $1, content = $2 WHERE id_nota = $3 AND user_id = $4 RETURNING *",
+      [title, content, id_nota, user_id]
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(403).json({ error: "No autorizado o nota no encontrada" });
+    }
+
+    res.json(result.rows[0]);
   } catch (error) {
     console.error("Error al actualizar nota:", error);
     res.status(500).json({ error: "Error en el servidor" });
@@ -48,12 +60,22 @@ export const deleteNote = async (req, res) => {
   const { id_nota } = req.params;
   const { user_id } = req.body;
 
+  if (!user_id) {
+    return res.status(400).json({ error: "Falta el user_id" });
+  }
+
   try {
-    await query("DELETE FROM notes WHERE id_nota = $1 AND user_id = $2", [id_nota, user_id]);
+    const result = await query("DELETE FROM notes WHERE id_nota = $1 AND user_id = $2", [id_nota, user_id]);
+
+    if (result.rowCount === 0) {
+      return res.status(403).json({ error: "No autorizado o nota no encontrada" });
+    }
+
     res.json({ message: "Nota eliminada" });
   } catch (error) {
     console.error("Error al eliminar nota:", error);
     res.status(500).json({ error: "Error en el servidor" });
   }
 };
+
 
